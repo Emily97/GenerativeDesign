@@ -11,11 +11,11 @@ This loads an image from a path and creates a p5.Image from it.
 ```js
 noLoop();
 ```
-Useful function, to stop a for loop effect on draw function
+Useful function, to stop a for loop effect on draw function.
 
 ```js
 function draw() {
   img.loadPixels();
 }
 ```
-This loads the pixels data for this image into the [pixels] attributes
+This loads the pixels data for this image into the [pixels] attributes.
