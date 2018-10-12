@@ -10,7 +10,7 @@ function setup() {
     noCursor();
     noStroke();
 
-    //Useful function, to stop of loop effect on draw function
+    //Useful function, to stop a for loop effect on draw function
     noLoop();
 }
 
