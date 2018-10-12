@@ -3,7 +3,7 @@
 ## Code explained
 ```js
 function preload() {
-  //loads an image from a path and creates a p5.Image from it.
   img = loadImage('data/pic1.jpg');
 }
 ```
+This loads an image from a path and creates a p5.Image from it.
