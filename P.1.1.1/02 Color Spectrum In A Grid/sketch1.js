@@ -1,18 +1,16 @@
 'use strict';
 function setup(){
     createCanvas(500,500);
-    colorMode(HSB, width, height, 100);
-    noStroke();
+    colorMode(HSB, 360, 100, 100);
+    // noStroke();
 }
 
 function draw(){
-  var stepX = mouseX/5 + 1;
-  var stepY = mouseY/5 + 1;
-
-      for(var gridY = 0; gridY < height; gridY += stepY){
-        for(var gridX = 0; gridX < width; gridX += stepX){
-          fill(gridX,height - gridY,100);
-          rect(gridX,gridY,stepX,stepY);
+        // A loop is now used to create 10 rectangles across the screen.
+        // We use gridX to determine the starting point of the rectangle on the x axis.
+        // This is incremented by 50 pixels each loop until it reaches the edge of the canvas.
+        for(var gridX = 0; gridX < width; gridX += 50){
+          fill('red');
+          rect(gridX,0,100,100);
         }
-      }
 }
