@@ -4,7 +4,7 @@
 ```js
 rectMode(CENTER);
 ```
-This places the rectangle in the centre of the canvas.
+This places the rectangle in the centre of the canvas. It interprets the first two parameters of rect() as the shape's center point, while the third and fourth parameters are its width and height. 
 
 ```js
 fill(360-mouseY/2,100,100);

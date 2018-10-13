@@ -2,7 +2,6 @@
 function setup(){
     createCanvas(500,500);
     colorMode(HSB, width, height, 100);
-    // rectMode(CENTER);
     noStroke();
 }
 

@@ -2,6 +2,7 @@ function setup(){
     createCanvas(720,720);
     colorMode(HSB, 360, 100, 100);
     //this places the rectangle in the centre of the canvas.
+    //interprets the first two parameters of rect() as the shape's center point, while the third and fourth parameters are its width and height. 
     rectMode(CENTER);
     noStroke();
 }
