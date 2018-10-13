@@ -10,5 +10,5 @@ The keyPressed() function is called once every time a key is pressed. In this ca
 
 ## Examples
 
-![Example](examples/181013_143605_336_MouseX_517_MouseY_458.png?raw=true "Example 1"){:height="50%" width="50%"}
+![Example](examples/181013_143605_336_MouseX_517_MouseY_458.png?raw=true "Example 1"){:height=200px width=200px}
 ![Example](examples/181013_154220_786_MouseX_253_MouseY_116.png?raw=true "Example 2")
