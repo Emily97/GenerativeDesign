@@ -11,4 +11,4 @@ The keyPressed() function is called once every time a key is pressed. In this ca
 ## Examples
 
 ![Example](examples/181013_143605_336_MouseX_517_MouseY_458.png?raw=true "Example 1")
-<!-- P.1.0\Final Hello,Color\examples\181013_143605_336_MouseX_517_MouseY_458.png -->
+![Example](examples/181013_154220_786_MouseX_253_MouseY_116.png?raw=true "Example 2")
