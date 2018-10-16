@@ -11,7 +11,7 @@ function setup() {
     createCanvas(500, 500);
     colorMode(HSB);
     noStroke();
-    shakeColor();
+    // shakeColor();
 }
 
 function draw() {
@@ -36,7 +36,7 @@ function draw() {
         }
     }
 }
-
+/*
 function shakeColor() {
     for(var i = 0; i < tileCountX; i++) {
         var randomColor = color(floor(random(0,255)), floor(random(0,255)), floor(random(0,255)));
@@ -46,5 +46,5 @@ function shakeColor() {
     }
 
 }
-
+*/
 //colorLeft[floor(random(0,colorLeft.length))]
