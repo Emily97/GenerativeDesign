@@ -7,6 +7,9 @@ function setup(){
 
 function draw(){
   // Using the beginShape() and endShape() functions allow creating more complex forms.
+  // The TRIANGLE_FAN is requiredd to make a circle.
+  // To start the TRIANGLE_FAN must have a starting position which is the centre and the vertexs are
+  // then made
   beginShape(TRIANGLE_FAN);
     vertex(57.5, 50);
     vertex(57.5, 15);
