@@ -15,8 +15,7 @@ We add the noStroke() method so we can see the transition between the low to hig
 var stepX = mouseX/5 + 1;
 var stepY = mouseY/5 + 1;
 ```
-StepX and stepY now increment depending on the mouses x and y position.
-[!Ask John why the mouseX and Y are divided by 5]
+StepX and stepY now increment depending on the mouses x and y position. By dividing mouseX and mouseY by 5 were are scaling the canvas so that instead of there being 500 steps there is now only 100. This increases the speed of the browser compared to if we didn't scale the steps with regards to the canvas. 
 
 ```js
 fill(gridX,height - gridY,100);
