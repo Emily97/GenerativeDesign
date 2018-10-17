@@ -4,7 +4,7 @@
 ```js
 colorMode(HSB, width, height, 100);
 ```
-The range of values for saturation and brightness are adjusted in such a way that mouse coordinates can be taken as their values.
+The value range for hue and saturation is set at 500 using the command colorMode().Hue is no longer defined as a number between 0 and 360. The same is true of the saturation value in this case.
 
 ```js
 noStroke();
@@ -12,10 +12,11 @@ noStroke();
 We add the noStroke() method so we can see the transition between the low to high range of saturation more clearly.
 
 ```js
-var stepX = mouseX/5 + 1;
-var stepY = mouseY/5 + 1;
+var scale = width/20;
+var stepX = mouseX/scale + 2;
+var stepY = mouseY/scale + 2;
 ```
-StepX and stepY now increment depending on the mouses x and y position. By dividing mouseX and mouseY by 5 were are scaling the canvas so that instead of there being 500 steps there is now only 100. This increases the speed of the browser compared to if we didn't scale the steps with regards to the canvas.
+StepX and stepY now increment depending on the mouses x and y position. By dividing mouseX and mouseY by 5 were are scaling the canvas so that instead of there being 500 steps there is now only 25. This reduces the chance of longer loading speeds. By adding 2 to the stepX and Y we reduce the chance of the value being too small which cause the page to freeze.
 
 ```js
 fill(gridX,height - gridY,100);

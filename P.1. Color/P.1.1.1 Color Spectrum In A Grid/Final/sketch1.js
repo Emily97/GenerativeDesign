@@ -10,9 +10,11 @@ function setup(){
 
 function draw(){
     // stepX and stepY now increment depending on the mouses x and y position.
-    // By dividing mouseX and mouseY by 5 were are scaling the canvas so that instead of there being 500 steps there is now only 100. This increases the speed of the browser compared to if we didn't scale the steps with regards to the canvas. 
-  var stepX = mouseX/5 + 1;
-  var stepY = mouseY/5 + 1;
+    // By dividing mouseX and mouseY by the scaling factor were are scaling the canvas so that instead of there being 500 steps there is now only 25. This reduces the chance of longer loading speeds.
+    // By adding 2 to the stepX and Y we reduce the chance of the value being too small which cause the page to freeze.
+  var scale = width/20;
+  var stepX = mouseX/scale + 2;
+  var stepY = mouseY/scale + 2;
 
       for(var gridY = 0; gridY < height; gridY += stepY){
         for(var gridX = 0; gridX < width; gridX += stepX){
