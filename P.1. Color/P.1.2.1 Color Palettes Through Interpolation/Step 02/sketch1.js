@@ -1,50 +1,72 @@
-
 'use strict';
 
-var colorLeft = [];
-var colorRight = [];
-var tileCountX = 5;
-var tileCountY = 5;
+var tileCountX = 2;
+var tileCountY = 10;
 
+var colorsLeft = []
+var colorsRight = [];
+var colors = [];
+
+var interpolateShortest = true;
 
 function setup() {
-    createCanvas(500, 500);
-    colorMode(HSB);
-    noStroke();
-    shakeColor();
+  createCanvas(800, 800);
+  colorMode(HSB);
+  noStroke();
+  shakeColors();
 }
 
 function draw() {
-    var tileWidth = width / tileCountX;
-    var tileHeight = height / tileCountY;
+  tileCountX = int(map(mouseX, 0, width, 2, 100));
+  tileCountY = int(map(mouseY, 0, height, 2, 10));
+  var tileWidth = width / tileCountX;
+  var tileHeight = height / tileCountY;
+  var interCol;
+  colors = [];
 
-    var interCol;
+  for (var gridY = 0; gridY < tileCountY; gridY++) {
+    var col1 = colorsLeft[gridY];
+    var col2 = colorsRight[gridY];
 
-    for(var gridY = 0; gridY < tileCountY; gridY++) {
-        for(var gridX = 0; gridX < tileCountX; gridX++) {
+    for (var gridX = 0; gridX < tileCountX; gridX++) {
+      var amount = map(gridX, 0, tileCountX - 1, 0, 1);
 
-            var amount = map(gridX, 0, tileCountX -1, 0, 1);
-            var startColor = colorLeft[gridY];
-            var endColor = colorRight[gridY];
+      if (interpolateShortest) {
+        // switch to rgb
+        colorMode(RGB);
+        interCol = lerpColor(col1, col2, amount);
+        // switch back
+        colorMode(HSB);
+      } else {
+        interCol = lerpColor(col1, col2, amount);
+      }
 
-            fill(lerpColor(startColor, endColor, amount));
+      fill(interCol);
 
-            var posX = tileWidth * gridX;
-            var posY = tileHeight * gridY;
+      var posX = tileWidth * gridX;
+      var posY = tileHeight * gridY;
+      rect(posX, posY, tileWidth, tileHeight);
 
-            rect(posX,posY,tileWidth,tileHeight);
-        }
+      // save color for potential ase export
+      colors.push(interCol);
     }
+  }
 }
 
-function shakeColor() {
-    for(var i = 0; i < tileCountX; i++) {
-        var randomColor = color(floor(random(0,255)), floor(random(0,255)), floor(random(0,255)));
-        var randomColor1 = color(floor(random(0,255)), floor(random(0,255)), floor(random(0,255)));
-        colorLeft.push(randomColor);
-        colorRight.push(randomColor1);
-    }
-
+function shakeColors() {
+  for (var i = 0; i < tileCountY; i++) {
+    colorsLeft[i] = color(random(0, 60), random(0, 100), 100);
+    colorsRight[i] = color(random(160, 190), 100, random(0, 100));
+  }
 }
 
-//colorLeft[floor(random(0,colorLeft.length))]
+function mouseReleased() {
+  shakeColors();
+}
+
+function keyPressed() {
+  if (key == 'c' || key == 'C') writeFile([gd.ase.encode( colors )], gd.timestamp(), 'ase');
+  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
+  if (key == '1') interpolateShortest = true;
+  if (key == '2') interpolateShortest = false;
+}
