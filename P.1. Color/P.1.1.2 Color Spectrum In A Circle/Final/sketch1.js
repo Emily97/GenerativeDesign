@@ -2,16 +2,15 @@
 var segmentCount = 360;
 function setup(){
     createCanvas(800,400);
-    colorMode(HSB, 360, 100, 100);
+    colorMode(HSB, 360, width, height);
     noStroke();
 }
 
 function draw(){
   background('violet');
   var step = 360/segmentCount;
-  var radius = 200;
+  var radius = height/2;
 
-  fill(230,100,100);
   beginShape(TRIANGLE_FAN);
     vertex(width/2,height/2);
     for(var angle = 0; angle <= 360; angle += step) {
@@ -24,8 +23,10 @@ function draw(){
 }
 
 function keyPressed(){
+// if the s key is pressed the canvas is saved as a png, the file will be named by using a timestamp method found in the generative design library
   if(key == 's' || key == 'S') saveCanvas(gd.timestamp(),'png');
 
+// the switch() command checks the last key pressed, which then switches easily between the keys to increase or decrease the number of segments.
   switch (key) {
     case '1':
       segmentCount = 360;
