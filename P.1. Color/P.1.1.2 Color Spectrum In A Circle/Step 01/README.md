@@ -2,6 +2,10 @@
 
 ## Code Explained
 ```js
+colorMode(HSB, 360, 100, 100);
+```
+The range of values for saturation and brightness are adjusted in such a way that mouse coordinates can be taken as their values.
+```js
 beginShape(TRIANGLE_FAN);
   vertex(57.5, 50);
   vertex(57.5, 15);

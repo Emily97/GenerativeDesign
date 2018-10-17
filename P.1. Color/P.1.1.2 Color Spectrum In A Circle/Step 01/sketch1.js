@@ -1,6 +1,7 @@
 'use strict';
 function setup(){
     createCanvas(800,400);
+    // The range of values for saturation and brightness are adjusted in such a way that mouse coordinates can be taken as their values.
     colorMode(HSB, 360, 100, 100);
     noLoop();
 }

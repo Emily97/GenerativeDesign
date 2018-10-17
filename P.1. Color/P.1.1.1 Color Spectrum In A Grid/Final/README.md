@@ -4,7 +4,7 @@
 ```js
 colorMode(HSB, width, height, 100);
 ```
-The range for the Hue and Saturation are set to the width and height of the canvas this means the range of values for Hue and Saturation in this case is 0 - 500.
+The range of values for saturation and brightness are adjusted in such a way that mouse coordinates can be taken as their values.
 
 ```js
 noStroke();
