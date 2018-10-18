@@ -34,7 +34,9 @@ function draw(){
 			var interCol = lerpColor(startColor, endColor, amount);
 			fill(interCol);
 
-			rect(gridX*tileWidth, gridY*tileHeight, tileWidth, tileHeight);
+			var posX = tileWidth * gridX;
+      var posY = tileHeight * gridY;
+      rect(posX, posY, tileWidth, tileHeight);
 		}
 	}
 
