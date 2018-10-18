@@ -2,12 +2,11 @@
 
 var tileCountX = 2;
 var tileCountY = 10;
-
 var colorsLeft = []
 var colorsRight = [];
 var colors = [];
-
-var interpolateShortest = true;
+//new variable declared as true
+var interpolateBetween = true;
 
 function setup() {
   createCanvas(800, 800);
@@ -25,20 +24,21 @@ function draw() {
   colors = [];
 
   for (var gridY = 0; gridY < tileCountY; gridY++) {
-    var col1 = colorsLeft[gridY];
-    var col2 = colorsRight[gridY];
+    var startColor = colorsLeft[gridY];
+    var endColor = colorsRight[gridY];
 
     for (var gridX = 0; gridX < tileCountX; gridX++) {
       var amount = map(gridX, 0, tileCountX - 1, 0, 1);
-
-      if (interpolateShortest) {
+      //if statement declares if colorMode is RGB then interpolate using this color colorMode
+      //otherwise it will interpolate colors in the HSB colorMode
+      if (interpolateBetween) {
         // switch to rgb
         colorMode(RGB);
-        interCol = lerpColor(col1, col2, amount);
+        interCol = lerpColor(startColor, endColor, amount);
         // switch back
         colorMode(HSB);
       } else {
-        interCol = lerpColor(col1, col2, amount);
+        interCol = lerpColor(startColor, endColor, amount);
       }
 
       fill(interCol);
@@ -54,18 +54,20 @@ function draw() {
 
 function shakeColors() {
   for (var i = 0; i < tileCountY; i++) {
-    colorsLeft[i] = color(random(0, 60), random(0, 100), 100);
-    colorsRight[i] = color(random(160, 190), 100, random(0, 100));
+    colorsLeft[i] = color(random(0, 40), random(0, 100), 100);
+    colorsRight[i] = color(random(230, 270), 100, random(0, 100));
   }
 }
 
 function mouseReleased() {
   shakeColors();
 }
-
+//new key presses have been added to save the canvas as a png
+//if you press the 1 key the colorMode changes to RBG
+//if you press the 2 key the colorMode changes to HSB
 function keyPressed() {
   if (key == 'c' || key == 'C') writeFile([gd.ase.encode( colors )], gd.timestamp(), 'ase');
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-  if (key == '1') interpolateShortest = true;
-  if (key == '2') interpolateShortest = false;
+  if (key == '1') interpolateBetween = true;
+  if (key == '2') interpolateBetween = false;
 }
