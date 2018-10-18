@@ -28,3 +28,6 @@ function keyPressed() {
 }
 ```
 New key presses have been added to save the canvas as a png, if you press the 1 key the colorMode changes to RBG and if you press the 2 key the colorMode changes to HSB.
+
+## Example
+![Example](examples/181018_160234_977.png?raw=true "Example 1")
