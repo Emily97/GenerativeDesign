@@ -47,7 +47,6 @@ function draw() {
       var posY = tileHeight * gridY;
       rect(posX, posY, tileWidth, tileHeight);
 
-      // save color for potential ase export
       colors.push(interCol);
     }
   }
