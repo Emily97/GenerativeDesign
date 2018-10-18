@@ -1,1 +1,3 @@
-# new folder
+# 02 Color Palettes From Rules 02
+
+## Code Explained
