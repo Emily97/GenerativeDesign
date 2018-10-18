@@ -26,5 +26,6 @@ function shakeColor() {
 		colorLeft[i] = color(random(255), random(255), random(255)); //generating 10 random colours
 		colorRight[i] = color(random(255), random(255), random(255)); //generating 10 random colours
 	}
-``
+}
+```
 ShakeColors is a function that is declared in the setup. This function creates a random color for the start and end of each row which is then interpolated by lerpColor to interpolate the other colours in-between.
