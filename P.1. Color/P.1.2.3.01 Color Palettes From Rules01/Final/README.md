@@ -29,4 +29,9 @@ These key presses change the HSB values depending on what is specified for each 
 
 ## Example
 ![Example: Red to Orange](examples/181019_215746_257.png? "Example: Red to Orange")
-![Example: Bright Yellow to Green](examples/181019_215807_149.png? "Example: Bright Yellow to Green")
+![Example: Bright Yellow to Green](examples/181019_215758_50.png? "Example: Bright Yellow to Green")
+![Example: Saturated Green](examples/181019_215800_837.png? "Example: Saturated Green")
+![Example: Green to Blue](examples/181019_215802_983.png? "Example: Green to Blue")
+![Example: Saturated Blue](examples/181019_215805_303.png? "Example: Saturated Blue")
+![Example: Bright Indigo to Violet](examples/181019_215807_149.png? "Example: Bright Indigo to Violet")
+![Example: Violet to Red](examples/181019_215809_149.png? "Example: Violet to Red")
