@@ -17,7 +17,7 @@ function draw() {
   randomSeed(actRandomSeed);
 
   // ------ colors ------
-  // create palette
+  // create palette   
   for (var i = 0; i < colorCount; i++) {
     if (i % 2 == 0) {
       hueValues[i] = random(130, 220);

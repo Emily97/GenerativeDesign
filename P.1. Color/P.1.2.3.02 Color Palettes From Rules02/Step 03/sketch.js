@@ -82,20 +82,3 @@ function draw() {
     }
   }
 }
-
-function mouseReleased() {
-  actRandomSeed = random(100000);
-  loop();
-}
-
-function keyPressed() {
-  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-  if (key == 'c' || key == 'C') {
-    // -- save an ase file (adobe swatch export) --
-    var colors = [];
-    for (var i = 0; i < hueValues.length; i++) {
-      colors.push(color(hueValues[i], saturationValues[i], brightnessValues[i]));
-    }
-    writeFile([gd.ase.encode(colors)], gd.timestamp(), 'ase');
-  }
-}
