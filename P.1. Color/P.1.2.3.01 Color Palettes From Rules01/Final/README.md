@@ -26,4 +26,4 @@ if (key == '1') {
 }
 ```
 These key presses change the HSB values depending on what is specified for each value under each key.
-![Example: Red to Orange](examples/181019_215746_257.png?raw=true "Example: Red to Orange")
+![Example: Red to Orange](examples/181019_215746_257.png? "Example: Red to Orange")
