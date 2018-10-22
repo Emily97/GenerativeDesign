@@ -57,7 +57,6 @@ function draw() {
     // draw rects for each row depending on the value of the parts array
     var currentParts = 0;
     for (var gridX = 0; gridX < parts.length; gridX++) {
-      currentParts += parts[gridX];
 
       var posX = map(currentParts, 0, totalParts, 0, width);
       var posY = tileHeight * gridY;
@@ -68,7 +67,7 @@ function draw() {
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
       fill(col);
       rect(posX, posY, w, tileHeight);
-
+      currentParts += parts[gridX];
       counter++;
     }
   }

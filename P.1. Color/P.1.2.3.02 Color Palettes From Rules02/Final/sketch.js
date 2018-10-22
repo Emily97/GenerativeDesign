@@ -54,16 +54,15 @@ function draw() {
 
     var currentParts = 0;
     for (var gridX = 0; gridX < parts.length; gridX++) {
-      currentParts += parts[gridX];
 
       var posX = map(currentParts, 0, totalParts, 0, width);
       var posY = tileHeight * gridY;
-      var w = -map(parts[gridX], 0, totalParts, 0, width);
+      var w = map(parts[gridX], 0, totalParts, 0, width);
       var index = counter % colorCount;
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
       fill(col);
       rect(posX, posY, w, tileHeight);
-
+      currentParts += parts[gridX];
       counter++;
     }
   }
