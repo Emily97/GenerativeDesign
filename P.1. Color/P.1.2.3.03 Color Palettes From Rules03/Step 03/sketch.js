@@ -63,7 +63,7 @@ function draw() {
       var posY = tileHeight * gridY;
       // the width of the rectangle goes in the negative direction from the posX
       // it doesn't exceed the width of the canvas
-      var w = -map(parts[gridX], 0, totalParts, 0, width);
+      var w = map(parts[gridX], 0, totalParts, 0, width);
       var index = counter % colorCount;
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
       fill(col);
