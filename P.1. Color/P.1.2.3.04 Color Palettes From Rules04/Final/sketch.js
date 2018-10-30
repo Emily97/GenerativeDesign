@@ -27,7 +27,7 @@ function draw() {
       brightnessValues[i] = random(100);
     } else {
       hueValues[i] = 195;
-      saturationValues[i] = random(20);
+      saturationValues[i] = random(100);
       brightnessValues[i] = 100;
     }
   }
@@ -36,22 +36,22 @@ function draw() {
   // count tiles
   var counter = 0;
   // row count and row height
-  var rowCount = int(random(5, 30));
-  var rowHeight = height / rowCount;
+  var tileCountY = int(random(5, 30));
+  var tileHeight = height / tileCountY;
 
   // seperate each line in parts
-  for (var i = rowCount; i >= 0; i--) {
+  for (var gridY = tileCountY; gridY >= 0; gridY--) {
     // how many fragments
-    var partCount = i + 1;
+    var numRect = gridY + 1;
     var parts = [];
 
-    for (var ii = 0; ii < partCount; ii++) {
+    for (var i = 0; i < numRect; i++) {
       // sub fragments or not?
       if (random() < 0.075) {
         // take care of big values
         var fragments = int(random(2, 20));
-        partCount = partCount + fragments;
-        for (var iii = 0; iii < fragments; iii++) {
+        numRect = numRect + fragments;
+        for (var ii = 0; ii < fragments; ii++) {
           parts.push(random(2));
         }
       } else {
@@ -60,28 +60,27 @@ function draw() {
     }
 
     // add all subparts
-    var sumPartsTotal = 0;
-    for (var ii = 0; ii < partCount; ii++) {
-      sumPartsTotal += parts[ii];
+    var totalParts = 0;
+    for (var j = 0; j < numRect; j++) {
+      totalParts += parts[j];
     }
 
     // draw rects
-    var sumPartsNow = 0;
-    for (var ii = 0; ii < parts.length; ii++) {
-      sumPartsNow += parts[ii];
+    var currentParts = 0;
+    for (var gridX = 0; gridX < parts.length; gridX++) {
+      currentParts += parts[gridX];
 
-      if (random() < 0.45) {
-        var x = map(sumPartsNow, 0, sumPartsTotal, 0, width);
-        var y = rowHeight * i;
-        var w = -map(parts[ii], 0, sumPartsTotal, 0, width);
-        var h = rowHeight * 1.5;
+      if(random() < 0.45) {
+          var posX = map(currentParts, 0, totalParts, 0, width);
+          var posY = tileHeight * gridY;
+          var w = -map(parts[gridX], 0, totalParts, 0, width);
+          var h = tileHeight * 1.5;
 
-        var index = counter % colorCount;
-        var col1 = color(0);
-        var col2 = color(hueValues[index], saturationValues[index], brightnessValues[index], alphaValue);
-        gradient(x, y, w, h, col1, col2);
+          var index = counter % colorCount;
+          var col1 = color(0);
+          var col2 = color(hueValues[index], saturationValues[index], brightnessValues[index], alphaValue);
+          gradient(posX, posY, w, h, col1, col2);
       }
-
       counter++;
     }
   }
