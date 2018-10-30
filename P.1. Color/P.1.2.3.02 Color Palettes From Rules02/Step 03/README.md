@@ -13,7 +13,7 @@ for (var gridY = tileCountY; gridY >= 0; gridY--) {
   var parts = [];
 }
 ```
-Seperate each row in parts. How many rectangles in each row depends on the tileCountY value plus 1.
+Seperate each row in parts. How many rectangles in each row depends on the tileCountY value plus 1. This insures the value of gridY is never a negative value.
 
 ```js
 for (var i = 0; i < numRect; i++) {

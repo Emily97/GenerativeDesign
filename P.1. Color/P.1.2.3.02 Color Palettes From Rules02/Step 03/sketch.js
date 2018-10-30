@@ -32,6 +32,7 @@ function draw() {
   // seperate each row in parts
   for (var gridY = tileCountY; gridY >= 0; gridY--) {
     // how many rectangles in each row depends on the tileCountY value plus 1.
+    // this insures the value of gridY is never a negative value
     var numRect = gridY + 1;
     var parts = [];
 
