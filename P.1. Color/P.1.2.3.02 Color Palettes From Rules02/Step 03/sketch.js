@@ -38,7 +38,13 @@ function draw() {
 
     // if random is less than 0.05 create fragments to fill up the parts array
     for (var i = 0; i < numRect; i++) {
-      if (random() < 0.05) {
+        //when random is declared with no value this means that the range of random values inspect
+        //between 0 and 1
+        //if the random number chosen is less than 0.075 then a random number of fragments are created
+        //the random number of fragments is between 2 and 20 and will be an integer
+        // we then enter the for loop which pushes random values into the parts array between 0 and 2
+        // else if the random value is greater than 0.075 then a random number between 2 and 20 is pushed to the parts array
+      if (random() < 0.075) {
         var fragments = int(random(2, 20));
         numRect += fragments;
         for (var ii = 0; ii < fragments; ii++) {
@@ -50,6 +56,8 @@ function draw() {
     }
 
     // add all the parts from the parts array together to get the total
+    //the totalParts is equated by adding totalParts to the value that is incremented
+    //through the parts array
     var totalParts = 0;
     for (var j = 0; j < numRect; j++) {
       totalParts += parts[j];
@@ -63,7 +71,9 @@ function draw() {
       var posY = tileHeight * gridY;
       // the width of the rectangle goes in the negative direction from the posX
       // it doesn't exceed the width of the canvas
-      var w = -map(parts[gridX], 0, totalParts, 0, width);
+      var w = map(parts[gridX], 0, totalParts, 0, width);
+      //as the rects are created the counter is incremented with each loop
+      //by using the modulas symbol the counter will not exceed colorCount and when it does the index will be reset back to 1
       var index = counter % colorCount;
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
       fill(col);
