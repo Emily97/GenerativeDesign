@@ -28,4 +28,4 @@ for (var gridY = 0; gridY < numberOfRows; gridY++) {
   }
 }
 ```
-Using a loop to create rows and columns of tiles all preset to color red
+Using a loop to create rows and columns of tiles all preset to color red.
