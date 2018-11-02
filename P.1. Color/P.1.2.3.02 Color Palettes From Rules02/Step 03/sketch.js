@@ -36,7 +36,6 @@ function draw() {
     var numRect = gridY + 1;
     var parts = [];
 
-    // if random is less than 0.05 create fragments to fill up the parts array
     for (var i = 0; i < numRect; i++) {
         //when random is declared with no value this means that the range of random values inspect
         //between 0 and 1
