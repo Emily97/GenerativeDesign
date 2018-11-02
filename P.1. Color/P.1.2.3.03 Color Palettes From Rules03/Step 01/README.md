@@ -1,4 +1,4 @@
-# 01 Color Palettes From Rules 02
+# 01 Color Palettes From Rules 03
 
 ## Code Explained
 ```js
