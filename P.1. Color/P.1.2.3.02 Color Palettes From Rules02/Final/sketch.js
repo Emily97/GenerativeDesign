@@ -36,7 +36,7 @@ function draw() {
     var parts = [];
 
     for (var i = 0; i < numRect; i++) {
-      if (random() < 0.05) {
+      if (random() < 0.075) {
         var fragments = int(random(2, 20));
         numRect += fragments;
         for (var ii = 0; ii < fragments; ii++) {
