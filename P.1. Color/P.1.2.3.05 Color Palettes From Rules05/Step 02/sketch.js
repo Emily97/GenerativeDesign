@@ -16,7 +16,7 @@ function setup() {
 function draw() {
   noLoop();
 
-  //this creates a color palette from blue to violet with varied saturation and brightness
+  //this creates a color palette with varied saturation and brightness
   for (var i = 0; i < colorCount; i++) {
     if (i % 2 == 0) {
       hueValues[i] = random(180);
