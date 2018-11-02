@@ -68,12 +68,12 @@ function draw() {
 
       var posX = map(currentParts, 0, totalParts, 0, width);
       var posY = tileHeight * gridY;
-      // the width of the rectangle goes in the negative direction from the posX
-      // it doesn't exceed the width of the canvas
+      //the starting position of the x value is determined by the value of the gridX which is incremented with each loop
       var w = map(parts[gridX], 0, totalParts, 0, width);
       //as the rects are created the counter is incremented with each loop
       //by using the modulas symbol the counter will not exceed colorCount and when it does the index will be reset back to 1
       var index = counter % colorCount;
+      //the index value influences what the color of each pixel will be
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
       fill(col);
       rect(posX, posY, w, tileHeight);
