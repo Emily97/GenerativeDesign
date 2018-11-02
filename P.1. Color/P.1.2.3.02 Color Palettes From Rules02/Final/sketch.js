@@ -69,8 +69,10 @@ function draw() {
 }
 
 function mouseReleased() {
-  //when the mouse is pressed the canvas will change to a random value between 1 and 75.
-  actRandomSeed = random(75);
+    //when the mouse is pressed the canvas will change to a random value between 1 and 100000
+    //each value between 0 and 100000 has a pattern specific to that number
+    //i.e. 5 will always look the same even if the canvas is reloaded
+  actRandomSeed = random(100000);
   console.log(actRandomSeed);
   loop();
 }

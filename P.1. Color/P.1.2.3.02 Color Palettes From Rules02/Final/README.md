@@ -13,12 +13,12 @@ Set the seed parameter to a constant to return the same pseudo-random numbers ea
 
 ```js
 function mouseReleased() {
-  actRandomSeed = random(75);
+  actRandomSeed = random(100000);
   console.log(actRandomSeed);
   loop();
 }
 ```
-When the mouse is pressed the canvas will change to a random value between 1 and 75.
+When the mouse is pressed the canvas will change to a random value between 1 and 100000. Each value between 0 and 100000 has a pattern specific to that number i.e. 5 will always look the same even if the canvas is reloaded.
 
 ```js
 function keyPressed() {

@@ -4,7 +4,9 @@ var colorCount = 20;
 var hueValues = [];
 var saturationValues = [];
 var brightnessValues = [];
+//new variable that will be used by the mouse to switch through different pseudo-random canvas'
 var actRandomSeed = 0;
+//this determines the alpha value which determines how transparent the colors will be
 var alphaValue = 27;
 
 function setup() {
@@ -16,39 +18,31 @@ function setup() {
 function draw() {
   noLoop();
   background(0);
+  //set the seed parameter to a constant to return the same pseudo-random numbers each time the software is run.
   randomSeed(actRandomSeed);
 
-  // ------ colors ------
-  // create palette
   for (var i = 0; i < colorCount; i++) {
     if (i % 2 == 0) {
-      hueValues[i] = random(360);
+      hueValues[i] = random(220, 290);
       saturationValues[i] = 100;
-      brightnessValues[i] = random(100);
+      brightnessValues[i] = random(15, 100);
     } else {
-      hueValues[i] = 195;
-      saturationValues[i] = random(100);
+      hueValues[i] = 260;
+      saturationValues[i] = random(20, 100);
       brightnessValues[i] = 100;
     }
   }
 
-  // ------ area tiling ------
-  // count tiles
   var counter = 0;
-  // row count and row height
   var tileCountY = int(random(5, 30));
   var tileHeight = height / tileCountY;
 
-  // seperate each line in parts
   for (var gridY = tileCountY; gridY >= 0; gridY--) {
-    // how many fragments
     var numRect = gridY + 1;
     var parts = [];
 
     for (var i = 0; i < numRect; i++) {
-      // sub fragments or not?
       if (random() < 0.075) {
-        // take care of big values
         var fragments = int(random(2, 20));
         numRect = numRect + fragments;
         for (var ii = 0; ii < fragments; ii++) {
@@ -59,13 +53,11 @@ function draw() {
       }
     }
 
-    // add all subparts
     var totalParts = 0;
     for (var j = 0; j < numRect; j++) {
       totalParts += parts[j];
     }
 
-    // draw rects
     var currentParts = 0;
     for (var gridX = 0; gridX < parts.length; gridX++) {
       currentParts += parts[gridX];
@@ -85,24 +77,36 @@ function draw() {
   }
 }
 
+// a function called gradient is made to create a linear gradient with the following parameters
 function gradient(x, y, w, h, c1, c2) {
   var ctx = drawingContext; // global canvas context p5.js var
+  // Create a linear gradient
+  // The start gradient point is at x, y
+  // The end gradient point is at x, y+h
   var grd = ctx.createLinearGradient(x, y, x, y + h);
+  //a color stop allows for a start and end color to be determined so that the colors inbetween can be interpolated between the two values
+  //grd.addColorStop(x, 'color'); the x value determines where in the in the gradient the color begins. If the value is 0 the color placed
+  //will be the starting color, if the value is 0.7 it determines the color at 7 tenths of the gradient. The x value is this example can only be
+  //between 0 and 1.
   grd.addColorStop(0, c1.toString());
   grd.addColorStop(1, c2.toString());
 	ctx.fillStyle = grd;
 	ctx.fillRect(x, y, w, h);
 }
-
+//when the mouse is pressed the canvas will change to a random value between 1 and 100000
+//each value between 0 and 100000 has a pattern specific to that number
+//i.e. 5 will always look the same even if the canvas is reloaded
 function mouseReleased() {
   actRandomSeed = random(100000);
   loop();
 }
 
+// when a key is pressed this function is called
+// when s is pressed the canvas is saved as a png with the file name being the date and time it was captured
+// when the c code is pressed the color values of the tiles are saved as an ase file which can be used as a palette in photoshop
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
   if (key == 'c' || key == 'C') {
-    // -- save an ase file (adobe swatch export) --
     var colors = [];
     for (var i = 0; i < hueValues.length; i++) {
       colors.push(color(hueValues[i], saturationValues[i], brightnessValues[i]));
