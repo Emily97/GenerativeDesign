@@ -1,3 +1,4 @@
+//constructor
 function Particle() {
   this.pos = createVector(random(width), random(height));
   this.vel = createVector(0, 0);
@@ -11,6 +12,7 @@ function Particle() {
     this.vel.add(this.acc);
     this.vel.limit(this.maxspeed);
     this.pos.add(this.vel);
+    //reset acceleration to zero
     this.acc.mult(0);
   }
 

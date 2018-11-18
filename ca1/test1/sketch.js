@@ -18,7 +18,7 @@ function setup() {
   for (var i = 0; i < 100; i++) {
     particles[i] = new Particle();
   }
-  background(51);
+  background(255);
 }
 
 function draw() {
