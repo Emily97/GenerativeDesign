@@ -1,19 +1,20 @@
+//review nature of code forces chapter
 //constructor
 function Particle() {
   this.pos = createVector(random(width), random(height));
-  this.vel = createVector(0, 0);
-  this.acc = createVector(0, 0);
+  this.velocity = createVector(0, 0); //velocity
+  this.acceleration = createVector(0, 0); //acceleration
   this.maxspeed = 4;
-  this.h = 0;
+  this.color = 0;
 
   this.prevPos = this.pos.copy();
 
   this.update = function() {
-    this.vel.add(this.acc);
-    this.vel.limit(this.maxspeed);
-    this.pos.add(this.vel);
+    this.velocity.add(this.acceleration);
+    this.velocity.limit(this.maxspeed);
+    this.pos.add(this.velocity);
     //reset acceleration to zero
-    this.acc.mult(0);
+    this.acceleration.mult(0);
   }
 
   this.follow = function(vectors) {
@@ -25,14 +26,14 @@ function Particle() {
   }
 
   this.applyForce = function(force) {
-    this.acc.add(force);
+    this.acceleration.add(force);
   }
 
   this.show = function() {
-    stroke(this.h, 255, 255, 25);
-    this.h = this.h + 1;
-    if (this.h > 255) {
-      this.h = 0;
+    stroke(this.color, 255, 255, 25);
+    this.color = this.color + 1;
+    if (this.color > 255) {
+      this.color = 0;
     }
     strokeWeight(1);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
