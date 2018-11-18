@@ -14,7 +14,8 @@ function setup() {
 
   flowfield = new Array(cols * rows);
 
-  for (var i = 0; i < 300; i++) {
+  // the number of vectors to be drawn on the canvas
+  for (var i = 0; i < 100; i++) {
     particles[i] = new Particle();
   }
   background(51);
@@ -36,7 +37,7 @@ function draw() {
     yoff += inc;
     zoff += 0.0003;
   }
-
+  // takes particles class functions
   for (var i = 0; i < particles.length; i++) {
     particles[i].follow(flowfield);
     particles[i].update();
@@ -44,6 +45,7 @@ function draw() {
     particles[i].show();
   }
 }
+//save png images to show steps
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
 }
