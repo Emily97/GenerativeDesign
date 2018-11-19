@@ -1,10 +1,12 @@
-var inc = 0.1;
+var inc = 1000;
 var scl = 10;
 var cols, rows;
 
 var zoff = 0;
 var particles = [];
 var flowfield;
+//
+var drawMode = 1;
 
 function setup() {
   createCanvas(1240, 1748);
@@ -15,10 +17,10 @@ function setup() {
   flowfield = new Array(cols * rows);
 
   // the number of vectors to be drawn on the canvas
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 1; i++) {
     particles[i] = new Particle();
   }
-  background(255);
+  background(45);
 }
 
 function draw() {
@@ -48,4 +50,8 @@ function draw() {
 //save png images to show steps
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
+	if (key == '1') drawMode = 1;
+	if (key == '2') drawMode = 2;
+	if (key == '3') drawMode = 3;
+	if (key == '4');
 }
