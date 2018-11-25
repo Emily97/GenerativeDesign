@@ -30,17 +30,12 @@ function Particle() {
   }
 
   this.show = function() {
-    // plan for this section is to implement a color swatch
-    //color swatch 1: r,o,y,g,b,i,v = complete
-    //color swatch 2: red, blue, yellow
-    //color swatch 3: orange, violet, green
-    //color swatch 4: yellow orange, red orange, red violet, blue violet, blue green, yellow green
-    stroke(this.color, 255, 255, 25);
+    stroke(this.color, 255, 255);
     this.color = this.color + 1;
     if (this.color > 255) {
       this.color = 0;
     }
-    strokeWeight(3);
+    strokeWeight(5);
     line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
     this.updatePrev();
   }

@@ -5,8 +5,6 @@ var cols, rows;
 var zoff = 0;
 var particles = [];
 var flowfield;
-//
-var drawMode = 1;
 
 function setup() {
   createCanvas(1240, 1748);
@@ -50,8 +48,4 @@ function draw() {
 //save png images to show steps
 function keyPressed() {
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
-	if (key == '1') drawMode = 1;
-	if (key == '2') drawMode = 2;
-	if (key == '3') drawMode = 3;
-	if (key == '4');
 }
