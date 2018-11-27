@@ -1,4 +1,4 @@
-var numberOfCircles = 1;
+var numberOfCircles = 10;
 var circles = [];
 
 var framesPerSecond = 40;
