@@ -1,4 +1,5 @@
-var inc = 1000;
+//revision of nature of code forces chapter
+var inc = 10;
 var scl = 10;
 var cols, rows;
 
@@ -15,7 +16,7 @@ function setup() {
   flowfield = new Array(cols * rows);
 
   // the number of vectors to be drawn on the canvas
-  for (var i = 0; i < 1; i++) {
+  for (var i = 0; i < 100; i++) {
     particles[i] = new Particle();
   }
   background(45);

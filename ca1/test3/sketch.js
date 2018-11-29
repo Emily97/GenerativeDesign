@@ -14,7 +14,7 @@ function setup() {
   var centreY = height/2;
 
   for (var i = 0; i < numberOfCircles; i++) {
-    circles.push(new PerlinCircle(centreX, centreY, width/6, height/4, 360*i/numberOfCircles));
+    circles.push(new Noise(centreX, centreY, width/6, height/4, 360*i/numberOfCircles));
   }
 }
 
@@ -24,7 +24,7 @@ function draw() {
   blendMode(DIFFERENCE);
 
   for (var i = 0; i < numberOfCircles; i++) {
-    circles[i].render();
+    circles[i].create();
   }
 }
 

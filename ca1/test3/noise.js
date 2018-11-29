@@ -1,4 +1,4 @@
-function PerlinCircle(xx, yy, minSize, maxSize, c) {
+function Noise(xx, yy, minSize, maxSize, c) {
   this.segments = 50;
   this.numberOfAngles = TWO_PI/this.segments;
   this.noiseLevel = 0.5;
@@ -15,7 +15,7 @@ function PerlinCircle(xx, yy, minSize, maxSize, c) {
   this.maxRadius = maxSize;
   this.hue = c;
 
-  this.render = function() {
+  this.create = function() {
     translate(this.x, this.y);
     fill(this.hue%360, 100, 100, 100);
 
