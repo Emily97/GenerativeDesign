@@ -18,8 +18,8 @@ function Particle() {
   }
 
   this.follow = function(vectors) { //vectors create a trail to follow the current vector
-    var x = floor(this.pos.x / scl); //the x value is created by flooring the position x and dividing it by scale
-    var y = floor(this.pos.y / scl); //the y value is created by flooring the position y and dividing it by scale
+    var x = floor(this.pos.x / scales); //the x value is created by flooring the position x and dividing it by scale
+    var y = floor(this.pos.y / scales); //the y value is created by flooring the position y and dividing it by scale
     var index = x + y * cols; //add the x and y multiplied by the number of columns
     var force = vectors[index]; //all the vector values are stored in the array
     this.applyForce(force);

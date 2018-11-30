@@ -1,4 +1,4 @@
-var scl = 10;
+var scales = 10;
 var cols, rows;
 var particles = []; //an array of particles which is currently empty
 var flowfield; //declaring the flowfield vector
@@ -9,8 +9,8 @@ function setup() {
   background(0); //set background color
   angleMode(DEGREES); //if this wasn't declared the angle would have to be declared in radians
 
-  cols = floor(width / scl); //the number of columns is dividing the width by the scale value, this value is then floored so the value will be an integer value
-  rows = floor(height / scl); //the number of rows is dividing the height by the scale value, this value is then floored so the value will be an integer value
+  cols = floor(width / scales); //the number of columns is dividing the width by the scale value, this value is then floored so the value will be an integer value
+  rows = floor(height / scales); //the number of rows is dividing the height by the scale value, this value is then floored so the value will be an integer value
 
   flowfield = new Array(cols * rows); //the number of elements in this array is the columns multiplied by the rows which gives the number of elements in the array
 
