@@ -21,7 +21,7 @@ function setup() {
 
 function draw() {
   blendMode(BLEND); //linear interpolation of colours
-  background(255); //refreshes the background every frame
+  background(0); //refreshes the background every frame
   blendMode(DIFFERENCE); //subtract colors from underlying image
 
   for (var i = 0; i < numberOfShapes; i++) { //the noise class takes whats declared in the show function
