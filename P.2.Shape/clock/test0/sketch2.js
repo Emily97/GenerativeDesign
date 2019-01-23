@@ -26,10 +26,14 @@ let secondHandLength = 155;
 let secondHandOffset = 80;
 let secondHandStartWidth = 10;
 
+var startAngle = 0;
+var myAngle = 6;
+
 function setup() {
   createCanvas(500, 500);
   noLoop();
   angleMode(DEGREES);
+  // ellipseMode(CENTER);
 
   minuteStrokeColor = color(30,30,30);
   minuteStrokeCap = SQUARE;
@@ -41,54 +45,47 @@ function draw() {
   // background(0);
   translate(width/2,height/2);
   noFill();
-  //ellipse(0,0,clockRadius,clockRadius);
+  // ellipse(0,0,clockRadius,clockRadius);
 
 
   push();
   fill(hourStrokeColor);
   stroke(hourStrokeCap);
-  rotate(30);
+  // rotate(30);
 
   beginShape();
-    vertex(0,hourHandOffset);
-    vertex(0,hourHandLength);
-    vertex(hourHandsTaper,hourHandLength);
-    vertex(hourHandStartWidth,hourHandOffset);
+
   endShape(CLOSE);
 
   fill(minuteStrokeColor);
   stroke(minuteStrokeCap);
-  rotate(170);
+  // rotate(170);
   beginShape();
-    vertex(0,minuteHandOffset);
-    vertex(0,minuteHandLength);
-    vertex(minuteHandsTaper,minuteHandLength);
-    vertex(minuteHandStartWidth,minuteHandOffset);
-  endShape(CLOSE);
+
   pop();
 
   push();
+    noStroke();
     fill(255,0,0);
-    rotate(45);
+    // rotate(250);
     beginShape();
-      vertex(0,secondHandOffset);
-      vertex(0,secondHandLength);
-      vertex(secondHandsTaper,secondHandLength);
-      vertex(secondHandStartWidth,secondHandOffset);
+      vertex(-5,-secondHandStartWidth/2);
+      vertex(0,secondHandStartWidth/2);
+      vertex(secondHandLength-secondHandOffset,secondHandStartWidth-secondHandsTaper);
     endShape(CLOSE);
-
+    ellipse(0,secondHandLength-secondHandOffset,25,25);
     ellipse(0,0,15,15);
-    ellipse(0,secondHandLength,25,25);
-  pop();
 
+  pop();
   fill(0);
-  for(var i=0;i<72;i++){
-    if(i%6){
-      rotate(0);
-      rect(0-180,5,20);
-    }else{
-      rotate(6);
-      rect(0,-180,1,20);
-    }
+  for(var i = 0; i<72; i++){
+      if(i%6){
+          rotate(myAngle);
+          rect(0,-100,1,5);
+      }
+      else{
+          rotate(startAngle);
+          rect(0,-100,5,15);
+      }
   }
 }
