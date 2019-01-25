@@ -42,41 +42,9 @@ function setup() {
   hourStrokeCap = SQUARE;
 }
 function draw() {
-  // background(0);
   translate(width/2,height/2);
   noFill();
   // ellipse(0,0,clockRadius,clockRadius);
-
-
-  push();
-  fill(hourStrokeColor);
-  stroke(hourStrokeCap);
-  // rotate(30);
-
-  beginShape();
-
-  endShape(CLOSE);
-
-  fill(minuteStrokeColor);
-  stroke(minuteStrokeCap);
-  // rotate(170);
-  beginShape();
-
-  pop();
-
-  push();
-    noStroke();
-    fill(255,0,0);
-    // rotate(250);
-    beginShape();
-      vertex(-5,-secondHandStartWidth/2);
-      vertex(0,secondHandStartWidth/2);
-      vertex(secondHandLength-secondHandOffset,secondHandStartWidth-secondHandsTaper);
-    endShape(CLOSE);
-    ellipse(0,secondHandLength-secondHandOffset,25,25);
-    ellipse(0,0,15,15);
-
-  pop();
   fill(0);
   for(var i = 0; i<72; i++){
       if(i%6){
@@ -88,4 +56,42 @@ function draw() {
           rect(0,-100,5,15);
       }
   }
+
+  push();
+      fill(hourStrokeColor);
+      strokeCap(hourStrokeCap);
+      rotate(60);
+      beginShape();
+          vertex(-hourHandStartWidth,-hourHandStartWidth/2);
+          vertex(hourHandLength-hourHandOffset-hourHandStartWidth,0);
+          vertex(hourHandLength-hourHandOffset-hourHandStartWidth,hourHandsTaper);
+          vertex(-hourHandStartWidth,hourHandStartWidth/2);
+      endShape(CLOSE);
+  pop();
+
+    push();
+        fill(minuteStrokeColor);
+        strokeCap(minuteStrokeColor);
+        rotate(-45);
+        beginShape();
+            vertex(-minuteHandStartWidth,-minuteHandStartWidth/2);
+            vertex(minuteHandLength-minuteHandOffset-minuteHandStartWidth,0);
+            vertex(minuteHandLength-minuteHandOffset-minuteHandStartWidth,minuteHandsTaper);
+            vertex(-minuteHandStartWidth,minuteHandStartWidth/2);
+        endShape(CLOSE);
+    pop();
+
+    push();
+        noStroke();
+        fill(255,0,0);
+        rotate(-25);
+        ellipse(0,0,15,15);
+        ellipse(secondHandLength-secondHandOffset-secondHandStartWidth,0,25,25);
+        beginShape();
+            vertex(-secondHandStartWidth,-secondHandStartWidth/2);
+            vertex(secondHandLength-secondHandOffset-secondHandStartWidth,0);
+            vertex(secondHandLength-secondHandOffset-secondHandStartWidth,secondHandsTaper);
+            vertex(-secondHandStartWidth,secondHandStartWidth/2);
+        endShape(CLOSE);
+    pop();
 }
