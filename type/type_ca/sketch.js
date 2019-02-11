@@ -2,7 +2,7 @@ let font;
 let gradient;
 let textImg;
 let pointDensity = 6;
-let fontSize = 200;
+let fontSize = 150;
 
 let circleRadius = 5;
 let radiusSlider;
@@ -20,7 +20,7 @@ let inputText;
 
 function preload(){
   font = loadFont('data/FreeSansBold.ttf');
-  gradient = loadImage('data/gradient.jpg');
+  gradient = loadImage('data/gradient2.png');
 }
 function setup(){
   rectMode(CENTER);
