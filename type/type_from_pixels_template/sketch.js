@@ -1,6 +1,6 @@
 let font;
 let textImg;
-let numOfTiles = 200;
+let numOfTiles = 100;
 let tileWidth;
 function preload(){
   font = loadFont('data/FreeSansBold.ttf');
