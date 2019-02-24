@@ -1,7 +1,7 @@
 let font;
 let gradient;
 let textImg;
-let random;
+let randomNess = 5;
 let pointDensity = 6;
 let fontSize = 150;
 
@@ -13,14 +13,24 @@ let randomSlider;
 
 let checkbox;
 let shapeBox;
-let animateBox;
 
 let filled = 1;
 let shape = 1;
-let rand = 1;
 
 let textInput = 'abc';
 let inputText;
+
+let startPos;
+let endPos;
+let xPos;
+let yPos;
+
+let canvasWidth =500;
+let canvasHeight = 500;
+let lerpAmount = 0;
+let easing = 0.00001;
+
+let jitter = true;
 
 function preload(){
   font = loadFont('data/FreeSansBold.ttf');
@@ -29,7 +39,7 @@ function preload(){
 function setup(){
   rectMode(CENTER);
   ellipseMode(CENTER);
-  let canvas = createCanvas(500,500);
+  let canvas = createCanvas(canvasWidth,canvasHeight);
   canvas.parent('canvasHolder');
 
   radiusSlider = createSlider(1,20,circleRadius);
@@ -44,10 +54,6 @@ function setup(){
   fontSlider.parent('fontController');
   fontSlider.input(update);
 
-  randomSlider = createSlider(1,20,random);
-  randomSlider.parent('randomController');
-  randomSlider.input(update);
-
   checkbox = createCheckbox('Fill', true);
   checkbox.parent('fillController');
   checkbox.changed(update);
@@ -56,9 +62,7 @@ function setup(){
   shapeBox.parent('shapeController');
   shapeBox.changed(update);
 
-  animateBox = createCheckbox('Animation', true);
-  animateBox.parent('animationController');
-  animateBox.changed(update);
+  
 
   inputText = createInput(textInput);
   inputText.parent('inputController');
@@ -69,12 +73,16 @@ function setup(){
   setupText();
 
 }
+
 function draw(){
+    startPos = [];
+    endPos = [];
+    startPoints();
   background(0, 30);
   // stroke(255);
 
-  for(let y = 0; y < textImg.width; y+=pointDensity){
-    for(let x = 0; x < textImg.width;x+=pointDensity){
+  for(let y = 0; y < height; y+=pointDensity){
+    for(let x = 0; x < width;x+=pointDensity){
 
       let index = (x + y * textImg.width) * 4;
       let tr = textImg.pixels[index];
@@ -83,28 +91,56 @@ function draw(){
       let b = gradient.pixels[index + 2] ;
       let colour = color(r,g,b);
 
+      var dx = 1 - lerpAmount;
+      lerpAmount += dx * easing;
+
+      xPos = lerp(startPos[index].x, endPos[index].x, lerpAmount);
+      yPos = lerp(startPos[index].y, endPos[index].y, lerpAmount);
+
+      if(jitter){
+          xPos = random(
+              xPos-5,
+              xPos+5
+          );
+          yPos = random(
+              yPos-5,
+              yPos+5
+          );
+      }
+
       if(tr < 128){
         if(filled){
           fill(colour);
           noStroke();
             if(shape){
-              rect(x,y,circleRadius,circleRadius);
+              rect(xPos,yPos,circleRadius,circleRadius);
             }else{
-            ellipse(x,y,circleRadius,circleRadius);
+            ellipse(xPos,yPos,circleRadius,circleRadius);
           }
         }else{
           noFill();
           stroke(255);
             if(shape){
-              rect(x,y,circleRadius,circleRadius);
+              rect(xPos,yPos,circleRadius,circleRadius);
             }else{
-            ellipse(x,y,circleRadius,circleRadius);
+            ellipse(xPos,yPos,circleRadius,circleRadius);
           }
         }
       }
-
     }
   }
+}
+
+function startPoints() {
+    for(let y = 0; y < height; y += pointDensity) {
+        for(let x = 0; x < width; x += pointDensity) {
+
+            let index = (x + y * canvasWidth) * 4;
+
+            startPos[index] = {x: Math.floor(random(0,width)), y: Math.floor(random(0,height))};
+            endPos[index] = {x: x, y: y};
+        }
+    }
 }
 
 function setupText(){
@@ -119,30 +155,11 @@ function setupText(){
 
 function update(){
   circleRadius = radiusSlider.value();
+  startPoints();
   textInput = inputText.value();
-  setupText();
-
-  if(checkbox.checked() == 1){
-    filled = 1;
-  }else{
-    filled = 0;
-  }
-
-  if(shapeBox.checked() == 1){
-    shape = 1;
-  }else{
-    shape = 0;
-  }
-
+  if(checkbox.checked() == 1){filled = 1;}else{filled = 0;}
+  if(shapeBox.checked() == 1){shape = 1;}else{shape = 0;}
   pointDensity = densitySlider.value();
   fontSize = fontSlider.value();
+  setupText();
 }
-//
-// var lerpAmount = (counter / finishArray.length) * stepAmount;
-// if(lerpAmount > 1){
-//   lerpAmount = 1;
-// }
-// var xPos = lerp(startArray[i].xPos, finishArray[i].xPos,lerpAmount);
-// var yPos = lerp(startArray[i].yPos, finishArray[i].yPos, lerpAmount);
-//
-// ellipse(xPos,yPos,circleRadius, circleRadius);
