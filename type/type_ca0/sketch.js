@@ -12,7 +12,6 @@ let randomSlider;
 
 let checkbox;
 let radio;
-// let shapeBox;
 let jitterBox;
 
 let filled = 1;
@@ -40,6 +39,7 @@ function preload() {
 function setup() {
   rectMode(CENTER);
   ellipseMode(CENTER);
+  angleMode(DEGREES);
   let canvas = createCanvas(canvasWidth,canvasHeight);
   canvas.parent('canvasHolder');
 
@@ -63,16 +63,12 @@ function setup() {
   jitterBox.parent('jitterController');
   jitterBox.changed(update);
 
-  // // //create more shape options, radio buttons
+  //create more shape options, radio buttons
   radio = createRadio();
   radio.option('Rectangle',1);
   radio.option('Circle',2);
   radio.parent('shapeController');
   radio.changed(update);
-
-  // shapeBox = createCheckbox('Rectangle', true);
-  // shapeBox.parent('shapeController');
-  // shapeBox.changed(update);
 
   inputText = createInput(textInput);
   inputText.parent('inputController');
@@ -116,13 +112,15 @@ function draw() {
           yPos + 10
         );
       }
-
+      let angleX = frameCount / 10;
+      let mySin = sin(angleX);
       if(tr < 128) {
         if(filled) {
           fill(colour);
           noStroke();
           if(shape == 1) {
-            rect(xPos,yPos,circleRadius,circleRadius);
+            rotate(45);
+            rect(xPos,mySin*yPos,circleRadius,circleRadius);
           }else if(shape == 2) {
             ellipse(xPos,yPos,circleRadius,circleRadius);
           }
@@ -168,7 +166,6 @@ function update() {
   animationStart();
   textInput = inputText.value();
   if(checkbox.checked() == 1) {filled = 1;}else{filled = 0;}
-  // if(shapeBox.checked() == 1){shape = 1;}else{shape = 0;}
   shape = radio.value();
   if(jitterBox.checked() == 1) {jitter = true;}else{jitter = false;}
   pointDensity = densitySlider.value();
