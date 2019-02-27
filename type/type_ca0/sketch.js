@@ -99,17 +99,22 @@ function draw() {
       let movement = 1 - lerpAmount;
       lerpAmount += movement * speed;
 
+      let angle1 = 0;
+      let angle2 = 0;
+      let ang1 = radians(angle1);
+      let ang2 = radians(angle2);
+
       xPos = lerp(startPosition[index].x, endPosition[index].x, lerpAmount);
       yPos = lerp(startPosition[index].y, endPosition[index].y, lerpAmount);
 
       if(jitter) {
         xPos = random(
-          xPos - 10,
+          xPos * -sin(ang1) * 0.01,
           xPos + 10
         );
         yPos = random(
           yPos - 10,
-          yPos + 10
+          yPos * +cos(ang2) * 0.01
         );
       }
       let angleX = frameCount / 10;
@@ -119,8 +124,8 @@ function draw() {
           fill(colour);
           noStroke();
           if(shape == 1) {
-            rotate(45);
-            rect(xPos,mySin*yPos,circleRadius,circleRadius);
+            rect(xPos,yPos,circleRadius,circleRadius);
+
           }else if(shape == 2) {
             ellipse(xPos,yPos,circleRadius,circleRadius);
           }
