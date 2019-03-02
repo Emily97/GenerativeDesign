@@ -1,33 +1,31 @@
-let angle1 = 0;
-let angle2 = 0;
-let scalar = 70;
+'use strict';
+
+let actRandomSeed = 0;
+let count = 50;
 
 function setup() {
-  createCanvas(710, 400);
+  createCanvas(800,800);
   noStroke();
-  rectMode(CENTER);
+  fill(0,130,164);
 }
 
 function draw() {
-  background(0);
+  background(255);
 
-  let ang1 = radians(angle1);
-  let ang2 = radians(angle2);
+  let faderX = mouseX / width;
+  randomSeed(actRandomSeed);
 
-  let x1 = width / 3 + scalar * cos(ang1);
-  let x2 = width / 2 + scalar * cos(ang2);
+  let angle = radians(360 / count);
+  for (let i = 0; i < count; i++) {
+    // positions
+    let randomX = random(0, width);
+    let randomY = random(0, height);
+    let circleX = width / 2 + cos(angle * i) * 300;
+    let circleY = height / 2 + sin(angle * i) * 300;
 
-  let y1 = height / 2 + scalar * sin(ang1);
-  let y2 = height / 2 + scalar * sin(ang2);
+    let x = lerp(randomX,circleX,faderX);
+    let y = lerp(randomY,circleY,faderX);
 
-  fill(0, 102, 153);
-  ellipse(x1, height * 0.5 - 120, scalar, scalar);
-  ellipse(x2, height * 0.5 + 120, scalar, scalar);
-
-  fill(255, 204, 0);
-  ellipse(width * 0.5 - 120, y1, scalar, scalar);
-  ellipse(width * 0.5 + 120, y2, scalar, scalar);
-
-  angle1 += 2;
-  angle2 += 3;
+    ellipse(x,y,11,11);
+  }
 }

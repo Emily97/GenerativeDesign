@@ -13,6 +13,7 @@ let randomSlider;
 let checkbox;
 let radio;
 let jitterBox;
+let animationBox;
 
 let filled = 1;
 let shape = 1;
@@ -30,7 +31,10 @@ let canvasHeight = 500;
 let lerpAmount = 0;
 let speed = 0.000005;
 
-let jitter = true;
+let jitter = false;
+let animation = false;
+let actRandomSeed = 0;
+let count = 150;
 
 function preload() {
   font = loadFont('data/FreeSansBold.ttf');
@@ -59,9 +63,13 @@ function setup() {
   checkbox.parent('fillController');
   checkbox.changed(update);
 
-  jitterBox = createCheckbox('Jitter', true);
+  jitterBox = createCheckbox('Jitter', false);
   jitterBox.parent('jitterController');
   jitterBox.changed(update);
+
+  animationBox = createCheckbox('Animation', false);
+  animationBox.parent('animationController');
+  animationBox.changed(update);
 
   //create more shape options, radio buttons
   radio = createRadio();
@@ -84,6 +92,9 @@ function draw() {
   endPosition = [];
   animationStart();
   background(0, 30);
+  let faderX = mouseX / width;
+  let angle = radians(360 / count);
+  // randomSeed(actRandomSeed);
   // stroke(255);
 
   for(let y = 0; y < height; y += pointDensity) {
@@ -99,43 +110,58 @@ function draw() {
       let movement = 1 - lerpAmount;
       lerpAmount += movement * speed;
 
-      let angle1 = 0;
-      let angle2 = 0;
-      let ang1 = radians(angle1);
-      let ang2 = radians(angle2);
-
       xPos = lerp(startPosition[index].x, endPosition[index].x, lerpAmount);
       yPos = lerp(startPosition[index].y, endPosition[index].y, lerpAmount);
 
       if(jitter) {
         xPos = random(
-          xPos * -sin(ang1) * 0.01,
-          xPos + 10
+          xPos - 1,
+          xPos + 1
         );
         yPos = random(
-          yPos - 10,
-          yPos * +cos(ang2) * 0.01
+          yPos - 1,
+          yPos + 1
         );
       }
-      let angleX = frameCount / 10;
-      let mySin = sin(angleX);
+
       if(tr < 128) {
+        let randomX = random(0,width);
+        let randomY = random(0,height);
+        let circleX = width / 7 + cos(angle);
+        let circleY = height / 7 + sin(angle);
+        let x = lerp(randomX,circleX,faderX);
+        let y = lerp(randomY,circleY,faderX);
         if(filled) {
           fill(colour);
           noStroke();
           if(shape == 1) {
-            rect(xPos,yPos,circleRadius,circleRadius);
-
+            if(animation) {
+              rect(xPos + x / 4,yPos + y / 4,circleRadius,circleRadius);
+            }else{
+              rect(xPos,yPos,circleRadius,circleRadius);
+            }
           }else if(shape == 2) {
-            ellipse(xPos,yPos,circleRadius,circleRadius);
+            if(animation) {
+              ellipse(xPos + x / 4,yPos + y / 4,circleRadius,circleRadius);
+            }else{
+              ellipse(xPos,yPos,circleRadius,circleRadius);
+            }
           }
         }else{
           noFill();
           stroke(255);
           if(shape == 1) {
-            rect(xPos,yPos,circleRadius,circleRadius);
+            if(animation) {
+              rect(xPos + x / 4,yPos + y / 4,circleRadius,circleRadius);
+            }else{
+              rect(xPos,yPos,circleRadius,circleRadius);
+            }
           }else if(shape == 2) {
-            ellipse(xPos,yPos,circleRadius,circleRadius);
+            if(animation) {
+              ellipse(xPos + x / 4,yPos + y / 4,circleRadius,circleRadius);
+            }else{
+              ellipse(xPos,yPos,circleRadius,circleRadius);
+            }
           }
         }
       }
@@ -175,6 +201,7 @@ function update() {
   if(jitterBox.checked() == 1) {jitter = true;}else{jitter = false;}
   pointDensity = densitySlider.value();
   fontSize = fontSlider.value();
+  if(animationBox.checked() == 1) {animation = 1;}else{animation = 0;}
   setupText();
 }
 

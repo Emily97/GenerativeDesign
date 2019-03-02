@@ -26,18 +26,18 @@ let endPosition;
 let xPos;
 let yPos;
 
-let canvasWidth =500;
+let canvasWidth = 500;
 let canvasHeight = 500;
 let lerpAmount = 0;
 let speed = 0.000005;
 
 let jitter = true;
 
-function preload(){
+function preload() {
   font = loadFont('data/FreeSansBold.ttf');
   gradient = loadImage('data/gradient2.png', setImage );
 }
-function setup(){
+function setup() {
   rectMode(CENTER);
   ellipseMode(CENTER);
   let canvas = createCanvas(canvasWidth,canvasHeight);
@@ -83,16 +83,16 @@ function setup(){
 
 }
 
-function draw(){
+function draw() {
   gradient.loadPixels();
-    startPosition = [];
-    endPosition = [];
-    animationStart();
+  startPosition = [];
+  endPosition = [];
+  animationStart();
   background(0, 30);
   // stroke(255);
 
-  for(let y = 0; y < height; y+=pointDensity){
-    for(let x = 0; x < width;x+=pointDensity){
+  for(let y = 0; y < height; y += pointDensity) {
+    for(let x = 0; x < width;x += pointDensity) {
 
       let index = (x + y * textImg.width) * 4;
       let tr = textImg.pixels[index];
@@ -101,41 +101,41 @@ function draw(){
       let b = gradient.pixels[index + 2] ;
       let colour = color(r,g,b);
 
-      var movement = 1 - lerpAmount;
+      let movement = 1 - lerpAmount;
       lerpAmount += movement * speed;
 
       xPos = lerp(startPosition[index].x, endPosition[index].x, lerpAmount);
       yPos = lerp(startPosition[index].y, endPosition[index].y, lerpAmount);
 
-      if(jitter){
-          xPos = random(
-              xPos-10,
-              xPos+10
-          );
-          yPos = random(
-              yPos-10,
-              yPos+10
-          );
+      if(jitter) {
+        xPos = random(
+          xPos - 10,
+          xPos + 10
+        );
+        yPos = random(
+          yPos - 10,
+          yPos + 10
+        );
       }
 
-      if(tr < 128){
-        if(filled){
+      if(tr < 128) {
+        if(filled) {
           fill(colour);
           noStroke();
-            if(shape == 1){
-              rect(xPos,yPos,circleRadius,circleRadius);
-            }else if(shape == 2){
+          if(shape == 1) {
+            rect(xPos,yPos,circleRadius,circleRadius);
+          }else if(shape == 2) {
             ellipse(xPos,yPos,circleRadius,circleRadius);
           }
-          else  if(shape == 3){
-            triangle(xPos,yPos,circleRadius,circleRadius,-circleRadius,-circleRadius)
+          else  if(shape == 3) {
+            triangle(xPos,yPos,circleRadius,circleRadius,-circleRadius,-circleRadius);
           }
         }else{
           noFill();
           stroke(255);
-            if(shape == 1){
-              rect(xPos,yPos,circleRadius,circleRadius);
-            }else if(shape == 2){
+          if(shape == 1) {
+            rect(xPos,yPos,circleRadius,circleRadius);
+          }else if(shape == 2) {
             ellipse(xPos,yPos,circleRadius,circleRadius);
           }
         }
@@ -145,36 +145,36 @@ function draw(){
 }
 
 function animationStart() {
-    for(let y = 0; y < height; y += pointDensity) {
-        for(let x = 0; x < width; x += pointDensity) {
+  for(let y = 0; y < height; y += pointDensity) {
+    for(let x = 0; x < width; x += pointDensity) {
 
-            let index = (x + y * canvasWidth) * 4;
+      let index = (x + y * canvasWidth) * 4;
 
-            startPosition[index] = {x: Math.floor(random(0,width)), y: Math.floor(random(0,height))};
-            endPosition[index] = {x: x, y: y};
-        }
+      startPosition[index] = {x: Math.floor(random(0,width)), y: Math.floor(random(0,height))};
+      endPosition[index] = {x: x, y: y};
     }
+  }
 }
 
-function setupText(){
+function setupText() {
   textImg = createGraphics(500,500);
   textImg.pixelDensity(1);
   textImg.background(255);
   textImg.textFont(font);
   textImg.textSize(fontSize);
   textImg.textAlign(CENTER,CENTER);
-  textImg.text(textInput,width/2,height/2);
+  textImg.text(textInput,width / 2,height / 2);
   textImg.loadPixels();
 }
 
-function update(){
+function update() {
   circleRadius = radiusSlider.value();
   animationStart();
   textInput = inputText.value();
-  if(checkbox.checked() == 1){filled = 1;}else{filled = 0;}
+  if(checkbox.checked() == 1) {filled = 1;}else{filled = 0;}
   // if(shapeBox.checked() == 1){shape = 1;}else{shape = 0;}
   shape = radio.value();
-  if(jitterBox.checked() == 1){jitter = true;}else{jitter = false;}
+  if(jitterBox.checked() == 1) {jitter = true;}else{jitter = false;}
   pointDensity = densitySlider.value();
   fontSize = fontSlider.value();
   setupText();
