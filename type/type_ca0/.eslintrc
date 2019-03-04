@@ -17,7 +17,6 @@
         "prefer-const": 0,
         "comma-style": 2,
         "indent": ["error", 2],
-        "space-infix-ops": 2,
-        "eqeqeq": ["error", "always"]
+        "space-infix-ops": 2
     }
 }

@@ -67,3 +67,7 @@ input[type="range"] {
 ::-ms-tooltip {
     display: none;
 }
+
+.form-row{
+  margin:25px;
+}

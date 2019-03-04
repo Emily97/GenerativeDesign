@@ -1,9 +1,11 @@
+
+//global variables
 let font;
 let gradient;
 let textImg;
 
 let pointDensity = 6;
-let fontSize = 150;
+let fontSize = 120;
 let circleRadius = 5;
 let radiusSlider;
 let densitySlider;
@@ -17,6 +19,8 @@ let animationBox;
 
 let filled = 1;
 let shape = 1;
+let jitter = false;
+let animation = false;
 
 let textInput = 'spark joy';
 let inputText;
@@ -28,13 +32,10 @@ let yPos;
 
 let canvasWidth = 500;
 let canvasHeight = 500;
+
 let lerpAmount = 0;
 let speed = 0.000005;
-
-let jitter = false;
-let animation = false;
-let actRandomSeed = 0;
-let count = 150;
+let count = 270;
 
 function preload() {
   font = loadFont('data/FreeSansBold.ttf');
@@ -44,30 +45,38 @@ function setup() {
   rectMode(CENTER);
   ellipseMode(CENTER);
   angleMode(DEGREES);
-  let canvas = createCanvas(canvasWidth,canvasHeight);
+  let canvas = createCanvas(500,500);
   canvas.parent('canvasHolder');
 
+  //slider -> radius size
   radiusSlider = createSlider(1,20,circleRadius);
   radiusSlider.parent('radiusController');
   radiusSlider.mouseReleased(update);
+  // let output = document.getElementById('demo');
+  // output.innerHTML = circleRadius.value;
 
+  //slider -> pixel density
   densitySlider = createSlider(3,10,pointDensity);
   densitySlider.parent('densityController');
   densitySlider.mouseReleased(update);
 
+  //slider -> font
   fontSlider = createSlider(100,500,fontSize);
   fontSlider.parent('fontController');
   fontSlider.input(update);
 
+  //checkbox -> fill
   checkbox = createCheckbox('Fill', true);
   checkbox.parent('fillController');
   checkbox.changed(update);
 
+  //checkbox -> jitter
   jitterBox = createCheckbox('Jitter', false);
   jitterBox.parent('jitterController');
   jitterBox.changed(update);
 
-  animationBox = createCheckbox('Animation', false);
+  //checkbox -> animation
+  animationBox = createCheckbox('Animate', false);
   animationBox.parent('animationController');
   animationBox.changed(update);
 
@@ -78,6 +87,7 @@ function setup() {
   radio.parent('shapeController');
   radio.changed(update);
 
+  //text input box
   inputText = createInput(textInput);
   inputText.parent('inputController');
   inputText.changed(update);
@@ -92,9 +102,10 @@ function draw() {
   endPosition = [];
   animationStart();
   background(0, 30);
-  let faderX = mouseX / width;
+  //the increment amount increases and decreases in value depending on the mouses X position relative to the screen
+  let incrementX = mouseX / width;
+  //the angle at which the rectangles or circles will move
   let angle = radians(360 / count);
-  // randomSeed(actRandomSeed);
   // stroke(255);
 
   for(let y = 0; y < height; y += pointDensity) {
@@ -113,6 +124,7 @@ function draw() {
       xPos = lerp(startPosition[index].x, endPosition[index].x, lerpAmount);
       yPos = lerp(startPosition[index].y, endPosition[index].y, lerpAmount);
 
+      //changes the xPos and yPos between -1 and 1 randomly to shake(jitter) the pixels postion around from its starting position
       if(jitter) {
         xPos = random(
           xPos - 1,
@@ -125,17 +137,22 @@ function draw() {
       }
 
       if(tr < 128) {
-        let randomX = random(0,width);
-        let randomY = random(0,height);
-        let circleX = width / 7 + cos(angle);
-        let circleY = height / 7 + sin(angle);
-        let x = lerp(randomX,circleX,faderX);
-        let y = lerp(randomY,circleY,faderX);
+        //starting position
+        let startX = random(0,width);
+        let startY = random(0,height);
+        //finishing position
+        let finishX = width / 7 + cos(angle);
+        let finishY = height / 7 + sin(angle);
+        //lerp -> calculates a number between two numbers at a specific increment
+        //in this instance incrementX is the amount to be interpolated between startX/startY and finishX/finishY
+        let x = lerp(startX,finishX,incrementX);
+        let y = lerp(startY,finishY,incrementX);
         if(filled) {
           fill(colour);
           noStroke();
           if(shape == 1) {
             if(animation) {
+              //adding animation to the shapes
               rect(xPos + x / 4,yPos + y / 4,circleRadius,circleRadius);
             }else{
               rect(xPos,yPos,circleRadius,circleRadius);
@@ -170,6 +187,7 @@ function draw() {
 }
 
 function animationStart() {
+  //adds the animation of the pixels falling into place when the application is loaded
   for(let y = 0; y < height; y += pointDensity) {
     for(let x = 0; x < width; x += pointDensity) {
 
@@ -206,8 +224,10 @@ function update() {
 }
 
 function keyReleased() {
+  //saves canvas as png
   if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
 
+  //switches between different images by pressing the following keys
   if (key == '1') loadImage('data/gradient2.png', setImage);
   if (key == '2') loadImage('data/gradient2.jpg', setImage);
   if (key == '3') loadImage('data/gradient3.jpg', setImage);
@@ -216,5 +236,6 @@ function keyReleased() {
 }
 
 function setImage(loadedImageFile) {
+  //each time a key is pressed that is associated with an image it changes the image
   gradient = loadedImageFile;
 }
