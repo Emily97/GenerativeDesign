@@ -1,3 +1,5 @@
+# Color > Color Palettes From Rules Part 04
+
 ## Step One
 
 - 1.[ Step One Code](Step 01/)
