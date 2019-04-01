@@ -1,4 +1,8 @@
+# Color > Color Palettes From Rules Part 01
 ## Step One
+
+- [ Step One ](Step 01/)
+
 ```js
 'use strict';
 // declaration of global variables that determine the number of tiles in the x and y direction
@@ -29,6 +33,9 @@ function draw() {
 ```
 
 ## Step Two
+
+- [ Step Two ](Step 02/)
+
 ```js
 'use strict';
 
@@ -64,6 +71,9 @@ function draw() {
 ```
 
 ## Step Three
+
+- [ Step Three ](Step 03/)
+
 ```js
 'use strict';
 
@@ -115,7 +125,10 @@ function draw() {
 }
 ```
 
-## Final
+## Final Step
+
+- [ Final Step ](Final/)
+
 ```js
 'use strict';
 
