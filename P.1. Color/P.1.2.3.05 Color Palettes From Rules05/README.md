@@ -1,4 +1,9 @@
+# Color > Color Palettes From Rules Part 05
+
 ## Step One
+
+- [ Step One ](Step 01/)
+
 ```js
 'use strict';
 //declaring global values that determine the number of columns or rows
@@ -28,6 +33,9 @@ function draw() {
 }
 ```
 ## Step Two
+
+- [ Step Two ](Step 02/)
+
 ```js
 'use strict';
 
@@ -81,6 +89,9 @@ function draw() {
 }
 ```
 ## Step Three
+
+- [ Step Three ](Step 03/)
+
 ```js
 'use strict';
 
@@ -203,6 +214,9 @@ function centerGradient(x1, y1, r1, x2, y2, r2, c1, c2) {
 ```
 
 ## Final Step
+
+- [ Final Step ](Final/)
+
 ```js
 'use strict';
 
