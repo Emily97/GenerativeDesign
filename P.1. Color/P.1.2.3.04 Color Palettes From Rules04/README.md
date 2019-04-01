@@ -1,4 +1,6 @@
 ## Step One
+
+- 1.[ Step One Code](Step 01/)
 ```js
 'use strict';
 //declaring global values that determine the number of columns or rows
