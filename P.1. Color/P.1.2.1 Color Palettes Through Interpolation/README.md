@@ -1,4 +1,4 @@
-# [ Color ](GenerativeDesign/P.1. Color/)
+# Color > Color Palettes Through Interpolation
 
 ## Step One
 
