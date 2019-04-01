@@ -2,7 +2,7 @@
 
 ## Step One
 
-- 1.[ Step One Code](Step 01/)
+- 1.[ Step One ](Step 01/)
 
 ```js
 'use strict';
@@ -35,7 +35,7 @@ function draw() {
 
 ## Step Two
 
-- 2.[ Step Two Code](Step 02/)
+- 2.[ Step Two ](Step 02/)
 
 ```js
 'use strict';
@@ -92,7 +92,7 @@ function draw() {
 
 ## Step Three
 
-- 3.[ Step Three Code](Step 03/)
+- 3.[ Step Three ](Step 03/)
 
 ```js
 'use strict';
@@ -183,7 +183,7 @@ function draw() {
 ```
 ## Final Step
 
-- 4.[ Final Step Code](Final/)
+- 4.[ Final Step ](Final/)
 
 ```js
 'use strict';
