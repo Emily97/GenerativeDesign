@@ -1,6 +1,9 @@
 # [ Color ](P.1. Color/)
 
 ## Step One
+
+- [ Step One ](Step 01/)
+
 ```js
 'use strict';
 
@@ -36,6 +39,9 @@ function draw(){
 ```
 
 ## Step Two
+
+- [ Step Two ](Step 02/)
+
 ```js
 'use strict';
 //declare two arrays that will fill the left and right most columns with colors, though currently they will be empty
@@ -94,6 +100,9 @@ function shakeColor() {
 ```
 
 ## Step Three
+
+- [ Step Three ](Step 03/)
+
 ```js
 'use strict';
 
@@ -158,6 +167,9 @@ function keyPressed() {
 ```
 
 ## Final
+
+- [ Final Step ](Final/)
+
 ```js
 'use strict';
 
