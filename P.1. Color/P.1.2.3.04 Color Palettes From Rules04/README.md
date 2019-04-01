@@ -170,7 +170,7 @@ function draw() {
   }
 }
 ```
-
+## Final Step
 ```js
 'use strict';
 
