@@ -1,4 +1,9 @@
+# Color > Color Palettes From Images
+
 ## Step One
+
+- [ Step One ](Step 01/)
+
 ```js
 
 'use strict';
@@ -26,6 +31,9 @@ function draw() {
 ```
 
 ## Step Two
+
+- [ Step Two ](Step 02/)
+
 ```js
 
 'use strict';
@@ -78,6 +86,9 @@ function draw() {
 ```
 
 ## Step Three
+
+- [ Step Three ](Step 03/)
+
 ```js
 
 'use strict';
@@ -124,6 +135,9 @@ function draw() {
 ```
 
 ## Final
+
+- [ Final ](Final/)
+
 ```js
 
 'use strict';
