@@ -1,4 +1,4 @@
-# [ Color ](P.1. Color/)
+# [ Color ](GenerativeDesign/P.1. Color/)
 
 ## Step One
 
