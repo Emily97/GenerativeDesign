@@ -1,4 +1,9 @@
+# Color > Color Palettes From Rules Part 02
+
 ## Step One
+
+- [ Step One ](Step 01/)
+
 ```js
 'use strict';
 //declaring global values that determine the number of columns or rows
@@ -29,6 +34,9 @@ function draw() {
 ```
 
 ## Step Two
+
+- [ Step Two ](Step 02/)
+
 ```js
 'use strict';
 
@@ -83,6 +91,8 @@ function draw() {
 ```
 
 ## Step Three
+
+- [ Step Three ](Step 03/)
 ```js
 'use strict';
 var colorCount = 20;
@@ -171,6 +181,9 @@ function draw() {
 ```
 
 ## Final
+
+- [ Final Step ](Final/)
+
 ```js
 'use strict';
 var colorCount = 20;
