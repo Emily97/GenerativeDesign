@@ -32,6 +32,9 @@ function draw() {
 ```
 
 ## Step Two
+
+- 2.[ Step Two Code](Step 02/)
+
 ```js
 'use strict';
 
@@ -86,6 +89,9 @@ function draw() {
 ```
 
 ## Step Three
+
+- 3.[ Step Three Code](Step 03/)
+
 ```js
 'use strict';
 
@@ -174,6 +180,9 @@ function draw() {
 }
 ```
 ## Final Step
+
+- 4.[ Final Step Code](Final/)
+
 ```js
 'use strict';
 
