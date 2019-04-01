@@ -93,6 +93,7 @@ function draw() {
 ## Step Three
 
 - [ Step Three ](Step 03/)
+
 ```js
 'use strict';
 var colorCount = 20;
