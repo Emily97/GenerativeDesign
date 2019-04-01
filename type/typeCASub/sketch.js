@@ -57,6 +57,7 @@ function setup() {
 
   //slider -> pixel density
   densitySlider = createSlider(3,10,pointDensity);
+
   densitySlider.parent('densityController');
   densitySlider.mouseReleased(update);
 
@@ -127,12 +128,12 @@ function draw() {
       //changes the xPos and yPos between -1 and 1 randomly to shake(jitter) the pixels postion around from its starting position
       if(jitter) {
         xPos = random(
-          xPos - 1,
-          xPos + 1
+          xPos - 5,
+          xPos + 5
         );
         yPos = random(
-          yPos - 1,
-          yPos + 1
+          yPos - 5,
+          yPos + 5
         );
       }
 
@@ -141,8 +142,8 @@ function draw() {
         let startX = random(0,width);
         let startY = random(0,height);
         //finishing position
-        let finishX = width / 7 + cos(angle);
-        let finishY = height / 7 + sin(angle);
+        let finishX = width / 3 + cos(angle);
+        let finishY = height / 3 + sin(angle);
         //lerp -> calculates a number between two numbers at a specific increment
         //in this instance incrementX is the amount to be interpolated between startX/startY and finishX/finishY
         let x = lerp(startX,finishX,incrementX);
