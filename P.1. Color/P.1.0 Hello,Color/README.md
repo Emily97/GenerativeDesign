@@ -47,6 +47,9 @@ function draw(){
 ```
 
 ## Step Three
+
+- [ Step Three Code](Step 03/)
+
 ```js
 function setup(){
     createCanvas(720,720);
@@ -67,6 +70,9 @@ function draw(){
 ```
 
 ## Final
+
+- [ Final Step Code](Final/)
+
 ```js
 function setup(){
     createCanvas(720,720);
