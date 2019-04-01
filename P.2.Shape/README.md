@@ -1,7 +1,7 @@
 # Shape
 
 ## Shape Index Page
-- 01.[ clock ](clock/)
+- 01.[ Clock Assignment ](clock/)
 - 02.[ Hello, Color](P.2.0.01/)
 - 03.[ Hello, Color](P.2.0.02/)
 - 04.[ Hello, Color](P.2.1.1.01/)

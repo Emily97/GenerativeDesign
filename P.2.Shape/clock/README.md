@@ -1,6 +1,6 @@
 # Shape > Clock Assignment
 
-## Clock Index Page
+## Clock Assignmnet Index Page
 - 01.[ Practise 01 ](practise1/)
 - 02.[ Practise 02 ](practise2/)
 - 03.[ Assignment Hand-Written ](test0/)
