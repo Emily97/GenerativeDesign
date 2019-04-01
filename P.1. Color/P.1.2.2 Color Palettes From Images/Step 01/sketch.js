@@ -19,5 +19,5 @@ function draw() {
   img.loadPixels();
 
 
-  console.log(img.loadPixels());
+  console.log(img);
 }
