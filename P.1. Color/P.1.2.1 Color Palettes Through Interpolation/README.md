@@ -1,3 +1,5 @@
+# [ Color ](P.1. Color/)
+
 ## Step One
 ```js
 'use strict';
