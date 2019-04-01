@@ -1,4 +1,9 @@
+# Color > Hello,Color
+
 ## Step One
+
+- [ Step One Code](Step 01/)
+
 ```js
 // The setup function is called once when the program starts. It initializes the canvas properties such as canvas size, colorMode etc.
 function setup(){
@@ -18,6 +23,9 @@ function draw(){
 ```
 
 ## Step Two
+
+- [ Step Two Code](Step 02/)
+
 ```js
 function setup(){
     createCanvas(720,720);
