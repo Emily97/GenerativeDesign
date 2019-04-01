@@ -2,7 +2,7 @@
 
 ## Step One
 
-- [ Step One Code](Step 01/)
+- [ Step One ](Step 01/)
 
 ```js
 // The setup function is called once when the program starts. It initializes the canvas properties such as canvas size, colorMode etc.
@@ -24,7 +24,7 @@ function draw(){
 
 ## Step Two
 
-- [ Step Two Code](Step 02/)
+- [ Step Two ](Step 02/)
 
 ```js
 function setup(){
@@ -48,7 +48,7 @@ function draw(){
 
 ## Step Three
 
-- [ Step Three Code](Step 03/)
+- [ Step Three ](Step 03/)
 
 ```js
 function setup(){
@@ -71,7 +71,7 @@ function draw(){
 
 ## Final
 
-- [ Final Step Code](Final/)
+- [ Final Step ](Final/)
 
 ```js
 function setup(){
